@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.RAGA</groupId>
-	<artifactId>messageApp</artifactId>
+	<artifactId>greeatingApp</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>Message App</name>
-	<description>Messaging application for BridgeLabz</description>
+	<name>greeatingApp</name>
+	<description>project for Spring Boot</description>
 	<url/>
 	<licenses>
 		<license/>
@@ -40,7 +40,6 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-
 	</dependencies>
 
 	<build>
