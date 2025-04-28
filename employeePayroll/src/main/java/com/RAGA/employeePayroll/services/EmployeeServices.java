@@ -36,7 +36,7 @@ public class EmployeeServices {
         return "OK! Updated";
     }
 
-    public String deleteByID(int id){
+    public String deleteByID(@ int id){
         employeeJpaRepositories.deleteById(id);
         return "OK! Deleted";
     }
