@@ -23,7 +23,11 @@ public class BirdAbility {
     }
 
     public Bird getByID(int id){
-        return jpaRepositories.findById(id).get();
+        return jpaRepositories.findById(id).orElseThrow(()-> new RuntimeException(String.valueOf(getAllID())));
+    }
+
+    public List<Integer> getAllID(){
+        return jpaRepositories.findAllId();
     }
 
     public Bird deleteByID(int id){
@@ -61,5 +65,13 @@ public class BirdAbility {
 
     public List<Bird> swimandrun(){
         return jpaRepositories.findByFlyFalseAndSwimTrueAndRunTrue();
+    }
+
+    public List<Bird> flySwimRun(){
+        return jpaRepositories.findByFlyTrueAndSwimTrueAndRunTrue();
+    }
+
+    public List<Bird> findByName(String name){
+        return jpaRepositories.findByName(name);
     }
 }

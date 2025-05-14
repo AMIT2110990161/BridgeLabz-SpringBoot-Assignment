@@ -7,7 +7,7 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-@Table
+@Table(schema = "bird")
 public class Bird {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

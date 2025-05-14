@@ -3,6 +3,8 @@ package com.RAGA.birdSanctuary.controller;
 import com.RAGA.birdSanctuary.entity.Bird;
 import com.RAGA.birdSanctuary.services.BirdAbility;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -24,8 +26,19 @@ public class BirdController {
     }
 
     @GetMapping("id/{id}")
-    public Bird getByID(@PathVariable int id){
-        return birdAbility.getByID(id);
+    public ResponseEntity<?> getByID(@PathVariable int id){
+        try {
+            Bird byID = birdAbility.getByID(id);
+            return ResponseEntity.ok(byID);
+        }catch (Exception ex){
+
+            return  new ResponseEntity<>(ex.getMessage(),HttpStatus.BAD_REQUEST);
+        }
+//        Bird bird =  birdAbility.getByID(id);
+//        if(bird == null){
+//            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(birdAbility.getAllID());
+//        }
+//        return ResponseEntity.ok(bird);
     }
 
     @PostMapping("id/{id}")
@@ -66,5 +79,15 @@ public class BirdController {
     @GetMapping("/swimandrun")
     public List<Bird> swimandrun(){
         return birdAbility.swimandrun();
+    }
+
+    @GetMapping("/fly-swim-run")
+    public List<Bird> flySwimRun(){
+        return birdAbility.flySwimRun();
+    }
+
+    @GetMapping("/getByName/{name}")
+    public List<Bird> findByName(@PathVariable String name){
+        return birdAbility.findByName(name);
     }
 }
